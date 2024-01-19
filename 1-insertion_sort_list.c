@@ -1,10 +1,9 @@
 #include "sort.h"
 
 /**
- * insertion_sort_list - Sorts a doubly linked list in
- * ascending order using Insertion sort
- *
- * @list: Pointer to the head of the doubly linked list
+ * insertion_sort_list - Function to use insertion sorting
+ * to sort a doubly linked link in ascending order
+ * @list: Double pointer to the head of the list
  */
 void insertion_sort_list(listint_t **list)
 {

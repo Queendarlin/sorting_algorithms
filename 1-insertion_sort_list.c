@@ -2,44 +2,39 @@
 
 /**
  * insertion_sort_list - Function to use insertion sorting
- * to sort a doubly linked list in ascending order
- *
- * @list: Double pointer to the head of the doubly linked list
+ * to sort a doubly linked link in ascending order
+ * @list: Double pointer to the head of the list
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current;
-	listint_t *temp;
+	listint_t *current_ptr, *temp_ptr;
 
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
-		return;
+	current_ptr = (*list)->next;
 
-	current = (*list)->next;
-
-	while (current != NULL)
+	while (current_ptr != NULL)
 	{
-		temp = current;
-		while (temp->prev != NULL && temp->n < temp->prev->n)
+		temp_ptr = current_ptr;
+		while (temp_ptr->prev != NULL && temp_ptr->n < temp_ptr->prev->n)
 		{
-			temp->prev->next = temp->next;
+			temp_ptr->prev->next = temp_ptr->next;
 
-			if (temp->next != NULL)
-				temp->next->prev = temp->prev;
+			if (temp_ptr->next != NULL)
+				temp_ptr->next->prev = temp_ptr->prev;
 
-			temp->next = temp->prev;
-			temp->prev = temp->prev->prev;
+			temp_ptr->next = temp_ptr->prev;
+			temp_ptr->prev = temp_ptr->prev->prev;
 
-			if (temp->prev != NULL)
-				temp->prev->next = temp;
+			if (temp_ptr->prev != NULL)
+				temp_ptr->prev->next = temp_ptr;
 
 			else
-				*list = temp;
+				*list = temp_ptr;
 
-			temp->next->prev = temp;
+			temp_ptr->next->prev = temp_ptr;
 
 			print_list(*list);
 		}
 
-		current = current->next;
+		current_ptr = current_ptr->next;
 	}
 }

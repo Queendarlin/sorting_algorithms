@@ -21,10 +21,9 @@ typedef struct listint_s
 } listint_t;
 
 
-void swap_node_ahead(listint_t **list, listint_t **tail, listint_t **shaker);
-void swap_node_behind(listint_t **list, listint_t **tail, listint_t **shaker);
+void swap_ahead(listint_t **list, listint_t **tail, listint_t **current_node);
+void swap_behind(listint_t **list, listint_t **tail, listint_t **current_node);
 void cocktail_sort_list(listint_t **list);
-void swap_nodes(listint_t **list, listint_t *node1, listint_t *node2);
 void swap_ints(int *first_int, int *second_int);
 int lomuto_partition(int *array, size_t size, int low, int high);
 void lomuto_sort(int *array, size_t size, int low, int high);

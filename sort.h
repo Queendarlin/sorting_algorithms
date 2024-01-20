@@ -21,9 +21,9 @@ typedef struct listint_s
 } listint_t;
 
 
-void swap_ints(int *a, int *b);
-void lomuto_sort(int *array, size_t size, int left, int right);
-int lomuto_partition(int *array, size_t size, int left, int right);
+void swap_ints(int *first_int, int *second_int);
+int lomuto_partition(int *array, size_t size, int low, int high);
+void lomuto_sort(int *array, size_t size, int low, int high);
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
 void bubble_sort(int *array, size_t size);

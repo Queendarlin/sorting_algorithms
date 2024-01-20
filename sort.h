@@ -20,7 +20,7 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
-
+int get_max(int *array, int size);
 void swap_ahead(listint_t **list, listint_t **tail, listint_t **current_node);
 void swap_behind(listint_t **list, listint_t **tail, listint_t **current_node);
 void cocktail_sort_list(listint_t **list);

@@ -1,6 +1,20 @@
 #include "sort.h"
 
 /**
+ * swap_ints - Swap two integers in an array.
+ * @a: The first integer to swap.
+ * @b: The second integer to swap.
+ */
+void swap_ints(int *a, int *b)
+{
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+/**
  * lomuto_partition - Lomuto partition scheme for Quick Sort
  * @array: Array to be partitioned
  * @low: Starting index of the partition
@@ -11,7 +25,7 @@
  */
 size_t lomuto_partition(int *array, ssize_t low, ssize_t high, size_t size)
 {
-	int pivot, temp;
+	int pivot;
 	ssize_t i, j;
 
 	pivot = array[high];
@@ -22,19 +36,13 @@ size_t lomuto_partition(int *array, ssize_t low, ssize_t high, size_t size)
 		if (array[j] < pivot)
 		{
 			i++;
-			temp = array[i];
-			array[i] = array[j];
-			array[j] = temp;
-			if (i != j)
-				print_array(array, size);
+			swap_ints(&array[i], &array[j]);
+			print_array(array, size);
 		}
 	}
 
-	temp = array[i + 1];
-	array[i + 1] = array[high];
-	array[high] = temp;
-	if (i + 1 != high)
-		print_array(array, size);
+	swap_ints(&array[i + 1], &array[high]);
+	print_array(array, size);
 
 	return (i + 1);
 }
@@ -69,18 +77,4 @@ void quick_sort(int *array, size_t size)
 		return;
 
 	quicksort(array, 0, size - 1, size);
-}
-
-/**
- * swap_ints - Swap two integers in an array.
- * @a: The first integer to swap.
- * @b: The second integer to swap.
- */
-void swap_ints(int *a, int *b)
-{
-	int tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
 }

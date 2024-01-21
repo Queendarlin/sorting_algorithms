@@ -20,6 +20,9 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
+void integer_swap(int *first_int, int *second_int);
+void maintain_heap_property(int *array, size_t size, size_t subtree_size,
+		size_t parent_index);
 int get_max(int *array, int size);
 void swap_ahead(listint_t **list, listint_t **tail, listint_t **current_node);
 void swap_behind(listint_t **list, listint_t **tail, listint_t **current_node);

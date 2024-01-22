@@ -46,5 +46,8 @@ typedef struct deck_node_s
 } deck_node_t;
 
 void sort_deck(deck_node_t **deck);
-
+int compare_strings(const char *string1, const char *string2);
+char get_card_value(deck_node_t *deck_card);
+void sort_deck_by_kind(deck_node_t **deck);
+void sort_deck_by_value(deck_node_t **deck);
 #endif

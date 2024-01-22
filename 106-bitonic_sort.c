@@ -11,9 +11,10 @@ void bitonic_sequence(int *array, size_t size, size_t start, size_t sequence,
 void bitonic_sort(int *array, size_t size);
 
 /**
- * swap_integers - Swap two integers in an array.
- * @first_int: The first integer to swap.
- * @second_int: The second integer to swap.
+ * swap_integers - For swapping two integers in an array.
+ *
+ * @a: Pointer to the first integer to swap.
+ * @b: Pointer to the second integer to swap.
  */
 void swap_integers(int *first_int, int *second_int)
 {
@@ -25,12 +26,12 @@ void swap_integers(int *first_int, int *second_int)
 }
 
 /**
- * bitonic_merge - Sort a bitonic sequence inside an array of integers.
- * @array: An array of integers.
- * @size: The size of the array.
- * @start: The starting index of the sequence in array to sort.
- * @sequence: The size of the sequence to sort.
- * @order: The direction to sort in (U or D).
+ * bitonic_merge - Sort a bitonic sequence in an array of integers.
+ * @array: Array of integers.
+ * @size: Size of the array.
+ * @start: Starting index of the sequence to sort.
+ * @sequence: Size of the sequence to sort.
+ * @order: Direction to sort in (Up or Down).
  */
 void bitonic_merge(int *array, size_t size, size_t start, size_t sequence,
 		char order)
@@ -55,12 +56,12 @@ void bitonic_merge(int *array, size_t size, size_t start, size_t sequence,
 }
 
 /**
- * bitonic_sequence - Convert an array of integers into a bitonic sequence.
- * @array: An array of integers.
- * @size: The size of the array.
- * @start: The starting index of a block of the building bitonic sequence.
- * @sequence: The size of a block of the building bitonic sequence.
- * @order: The direction to sort the bitonic sequence block in (U or D).
+ * bitonic_sort - Sort an array of integers using the bitonic sort algorithm.
+ * @array: Array of integers.
+ * @size: Size of the array.
+ *
+ * Will print the array after each swap, for size = 2^k
+ * where k >= 0 (size= powers of 2).
  */
 void bitonic_sequence(int *array, size_t size, size_t start, size_t sequence,
 		char order)

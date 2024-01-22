@@ -20,7 +20,6 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
-
 int getMax(int *array, size_t size);
 void countingSort(int *array, size_t size, int exp);
 void integer_swap(int *first_int, int *second_int);

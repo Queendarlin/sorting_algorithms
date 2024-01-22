@@ -20,6 +20,9 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
+
+int getMax(int *array, size_t size);
+void countingSort(int *array, size_t size, int exp);
 void integer_swap(int *first_int, int *second_int);
 void maintain_heap_property(int *array, size_t size, size_t subtree_size,
 		size_t parent_index);

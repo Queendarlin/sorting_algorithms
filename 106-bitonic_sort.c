@@ -3,13 +3,6 @@
 #define U 0
 #define D 1
 
-void swap_integers(int *first_int, int *second_int);
-void bitonic_merge(int *array, size_t size, size_t start, size_t sequence,
-		char order);
-void bitonic_sequence(int *array, size_t size, size_t start, size_t sequence,
-		char order);
-void bitonic_sort(int *array, size_t size);
-
 /**
  * swap_integers - For swapping two integers in an array.
  *

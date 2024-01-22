@@ -3,7 +3,7 @@
 #define U 0
 #define D 1
 
-void swap_integers(int *a, int *b);
+void swap_integers(int *first_int, int *second_int);
 void bitonic_merge(int *array, size_t size, size_t start, size_t sequence,
 		char order);
 void bitonic_sequence(int *array, size_t size, size_t start, size_t sequence,
@@ -12,16 +12,16 @@ void bitonic_sort(int *array, size_t size);
 
 /**
  * swap_integers - Swap two integers in an array.
- * @a: The first integer to swap.
- * @b: The second integer to swap.
+ * @first_int: The first integer to swap.
+ * @second_int: The second integer to swap.
  */
-void swap_integers(int *a, int *b)
+void swap_integers(int *first_int, int *second_int)
 {
 	int tmp;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	tmp = *first_int;
+	*first_int = *second_int;
+	*second_int = tmp;
 }
 
 /**
@@ -35,20 +35,22 @@ void swap_integers(int *a, int *b)
 void bitonic_merge(int *array, size_t size, size_t start, size_t sequence,
 		char order)
 {
-	size_t i, jump = sequence / 2;
+	size_t itr, jumps = sequence / 2;
 
 	if (sequence > 1)
 	{
-		for (i = start; i < start + jump; i++)
+		for (itr = start; itr < start + jumps; itr++)
 		{
-			if ((order == U && array[i] > array[i + jump]) ||
-					(order == D && array[i] < array[i + jump]))
+			if ((order == U && array[itr] > array[itr + jumps]) ||
+					(order == D && array[itr] <
+					 array[itr + jumps]))
 			{
-				swap_integers(array + i, array + i + jump);
+				swap_integers(array + itr,
+						array + itr + jumps);
 			}
 		}
-		bitonic_merge(array, size, start, jump, order);
-		bitonic_merge(array, size, start + jump, jump, order);
+		bitonic_merge(array, size, start, jumps, order);
+		bitonic_merge(array, size, start + jumps, jumps, order);
 	}
 }
 
@@ -64,17 +66,18 @@ void bitonic_sequence(int *array, size_t size, size_t start, size_t sequence,
 		char order)
 {
 	size_t cut = sequence / 2;
+	char *string = (order == U) ? "UP" : "DOWN";
 
 	if (sequence > 1)
 	{
-		printf("Merging [%lu/%lu] (%c):\n", sequence, size, order ? 'D' : 'U');
+		printf("Merging [%lu/%lu] (%s):\n", sequence, size, string);
 		print_array(array + start, sequence);
 
 		bitonic_sequence(array, size, start, cut, U);
 		bitonic_sequence(array, size, start + cut, cut, D);
 		bitonic_merge(array, size, start, sequence, order);
 
-		printf("Result [%lu/%lu] (%c):\n", sequence, size, order ? 'D' : 'U');
+		printf("Result [%lu/%lu] (%s):\n", sequence, size, string);
 		print_array(array + start, sequence);
 	}
 }

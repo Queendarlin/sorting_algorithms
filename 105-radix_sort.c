@@ -8,15 +8,15 @@
  */
 int getMax(int *array, size_t size)
 {
-	int max = array[0];
-	size_t i;
+	int max_value = array[0];
+	size_t itr;
 
-	for (i = 1; i < size; i++)
+	for (itr = 1; itr < size; itr++)
 	{
-		if (array[i] > max)
-			max = array[i];
+		if (array[itr] > max_value)
+			max_value = array[itr];
 	}
-	return (max);
+	return (max_value);
 }
 
 /**
@@ -28,30 +28,30 @@ int getMax(int *array, size_t size)
 void countingSort(int *array, size_t size, int exp)
 {
 	int *output, count[10] = {0};
-	size_t i;
+	size_t itr;
 
 	output = malloc(sizeof(int) * size);
 	if (output == NULL)
 		return;
 
 	/* Count occurrences of digits at the current significant place */
-	for (i = 0; i < size; i++)
-		count[(array[i] / exp) % 10]++;
+	for (itr = 0; itr < size; itr++)
+		count[(array[itr] / exp) % 10]++;
 
 	/* Update count[i] to store the position of the next occurrence */
-	for (i = 1; i < 10; i++)
-		count[i] += count[i - 1];
+	for (itr = 1; itr < 10; itr++)
+		count[itr] += count[itr - 1];
 
 	/* Build the output array */
-	for (i = size - 1; i < size; i--)
+	for (itr = size - 1; itr < size; itr--)
 	{
-		output[count[(array[i] / exp) % 10] - 1] = array[i];
-		count[(array[i] / exp) % 10]--;
+		output[count[(array[itr] / exp) % 10] - 1] = array[itr];
+		count[(array[itr] / exp) % 10]--;
 	}
 
 	/* Copy the output array back to the original array */
-	for (i = 0; i < size; i++)
-		array[i] = output[i];
+	for (itr = 0; itr < size; itr++)
+		array[itr] = output[itr];
 
 	print_array(array, size);
 	free(output);
@@ -65,14 +65,14 @@ void countingSort(int *array, size_t size, int exp)
  */
 void radix_sort(int *array, size_t size)
 {
-	int max, exp;
+	int max_value, exp;
 
 	if (array == NULL || size < 2)
 		return;
 
-	max = getMax(array, size);
+	max_value = getMax(array, size);
 
-	for (exp = 1; max / exp > 0; exp *= 10)
+	for (exp = 1; max_value / exp > 0; exp *= 10)
 	{
 		countingSort(array, size, exp);
 	}

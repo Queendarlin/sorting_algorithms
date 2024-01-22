@@ -13,8 +13,8 @@ void bitonic_sort(int *array, size_t size);
 /**
  * swap_integers - For swapping two integers in an array.
  *
- * @a: Pointer to the first integer to swap.
- * @b: Pointer to the second integer to swap.
+ * @first_int: Pointer to the first integer to swap.
+ * @second_int: Pointer to the second integer to swap.
  */
 void swap_integers(int *first_int, int *second_int)
 {
@@ -54,14 +54,13 @@ void bitonic_merge(int *array, size_t size, size_t start, size_t sequence,
 		bitonic_merge(array, size, start + jumps, jumps, order);
 	}
 }
-
 /**
- * bitonic_sort - Sort an array of integers using the bitonic sort algorithm.
+ * bitonic_sequence - For integers conversion into a bitonic sequence.
  * @array: Array of integers.
  * @size: Size of the array.
- *
- * Will print the array after each swap, for size = 2^k
- * where k >= 0 (size= powers of 2).
+ * @start: Starting index of a block of the building bitonic sequence.
+ * @sequence: Size of a block of the building bitonic sequence.
+ * @order: Direction to sort the bitonic sequence (Up or Down).
  */
 void bitonic_sequence(int *array, size_t size, size_t start, size_t sequence,
 		char order)
@@ -84,13 +83,12 @@ void bitonic_sequence(int *array, size_t size, size_t start, size_t sequence,
 }
 
 /**
- * bitonic_sort - Sort an array of integers in
- * ascending order using the bitonic sort algorithm.
- * @array: An array of integers.
- * @size: The size of the array.
+ * bitonic_sort - Sort an array of integers using the bitonic sort algorithm.
+ * @array: Array of integers.
+ * @size: Size of the array.
  *
- * Description: Prints the array after each swap. Only works for
- * size = 2^k where k >= 0 (i.e., size equal to powers of 2).
+ * Will print the array after each swap, for size = 2^k
+ * where k >= 0 (size= powers of 2).
  */
 void bitonic_sort(int *array, size_t size)
 {
